@@ -18,7 +18,9 @@ variables:
 ### Install Dependencies
 - Run the following command to install all the dependencies:
 
-    `$ pip install -r requirements.txt`
+    ```
+    $ pip install -r requirements.txt
+    ```
 
     **Note:** You need pip installed in your system for running above command . To install pip, refer [official documentation](https://pip.pypa.io/en/stable/installing/).
 
@@ -26,7 +28,9 @@ variables:
 
     - Run this command in terminal:
 
-        `$ python3 -m spacy download en_core_web_sm`
+        ```
+        $ python3 -m spacy download en_core_web_sm
+        ```
 
     - Run these commands in the python shell:
 
@@ -50,7 +54,9 @@ variables:
 
 #### Command to run:
 
-  `$ python main.py 'url' page_count(optional)`
+  ```
+  $ python main.py 'url' page_count(optional)
+  ```
 
   Example:
 
@@ -60,11 +66,14 @@ variables:
     $ python main.py 'https://www.scoopwhoop.com/entertainment/memes-from-dd-ramayan/'
 
 
-  **For more help, use command:** `python3 main.py -h`
+  **For more help, use command:** 
+  ```python3 main.py -h```
 
 ### Flask Server
 
-`$ python run_server.py`
+```
+$ python run_server.py
+```
 
 The server will be hosted at http://127.0.0.1:5000/
 
@@ -79,3 +88,16 @@ The server will be hosted at http://127.0.0.1:5000/
   to see generated stamp at this endpoint.
 
 ### Docker Container
+#### Build
+```
+docker build -t stampify:latest . \
+    --build-arg flask_app_secret="your_flask_app_sercet" \
+    --build-arg google_cloud_api_secret="your_google_cloud_api_sercet"
+```
+#### Run
+Any port could be used from outside container. If port is 5010, then run
+```
+docker run -d -e PORT=5000 -p 5010:5000 stampify
+```
+#### Result
+Open http://127.0.0.1:5010/
