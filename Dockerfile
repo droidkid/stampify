@@ -16,6 +16,12 @@ RUN pip3 --no-cache-dir install -r requirements.txt
 
 CMD [ "python", "./install.py" ]
 
+RUN python -m spacy download en_core_web_sm
+
+RUN python -c "from sentence_transformers import SentenceTransformer; model = SentenceTransformer(\"bert-base-nli-stsb-mean-tokens\")"
+
+RUN python -c "import nltk; nltk.download(\"punkt\")"
+
 EXPOSE 5000
 
 RUN pip install gunicorn
