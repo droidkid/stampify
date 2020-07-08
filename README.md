@@ -127,3 +127,4 @@ project images). Now to deploy the app:
 
 ```
 gcloud app deploy --image-url=us.gcr.io/stampify-279009/stampify:latest
+```
