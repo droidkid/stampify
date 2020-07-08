@@ -94,15 +94,7 @@ docker build -t stampify:latest . \
     --build-arg flask_app_secret="your_flask_app_sercet" \
     --build-arg google_cloud_api_secret="your_google_cloud_api_sercet"
 ```
-#### Run
-Any port could be used from outside container. If port is 5010, then run
-```
-docker run -d -e PORT=5000 -p 5010:5000 stampify
-```
-#### Result
-Open http://127.0.0.1:5010/
-=======
-Any port could be used from outside container. If the port you want to use is 5010, 
+Any port could be used from outside container. If the port you want to use is 5010,
 then run
 ```
 docker run -d -e PORT=8080 -p 5010:8080 stampify
