@@ -94,6 +94,7 @@ docker build -t stampify:latest . \
     --build-arg flask_app_secret="your_flask_app_sercet" \
     --build-arg google_cloud_api_secret="your_google_cloud_api_sercet"
 ```
+#### Run
 Any port could be used from outside container. If the port you want to use is 5010,
 then run
 ```
