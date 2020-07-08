@@ -101,3 +101,37 @@ docker run -d -e PORT=5000 -p 5010:5000 stampify
 ```
 #### Result
 Open http://127.0.0.1:5010/
+=======
+Any port could be used from outside container. If the port you want to use is 5010, 
+then run
+```
+docker run -d -e PORT=8080 -p 5010:8080 stampify
+```
+
+Internally, the server listens on port 8080 (This is an GCP App Engine
+requirement).
+
+#### Result
+Open http://127.0.0.1:5010/
+
+### Deploy to GCP
+
+The following commands assume your GCP project-id is 'stampify-279009'. Your GCP
+project also needs to have the container registry API enabled. GCP App Engine is
+being used to run the project. Cloud Run would use similar instructions.
+
+To deploy to GCP, first build a docker image using the instructions above.
+
+Then you'll need to push the image to gcr.
+
+```
+docker tag stampify:latest us.gcr.io/stampify-279009/stampify:latest
+docker push us.gcr.io/stampify-279009/stampify:latest
+```
+
+Verify that the image was pushed (you should be able to find it in your GCP
+project images). Now to deploy the app:
+
+```
+gcloud app deploy --image-url=us.gcr.io/stampify-279009/stampify:latest
+```
